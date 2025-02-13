@@ -1,0 +1,14 @@
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.GeneratedMSBuildEditorConfig.editorconfig
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.AssemblyInfoInputs.cache
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.AssemblyInfo.cs
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.csproj.CoreCompileInputs.cache
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/bin/Debug/net9.0/Bank
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/bin/Debug/net9.0/Bank.deps.json
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/bin/Debug/net9.0/Bank.runtimeconfig.json
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/bin/Debug/net9.0/Bank.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/bin/Debug/net9.0/Bank.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/refint/Bank.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.genruntimeconfig.cache
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/ref/Bank.dll
