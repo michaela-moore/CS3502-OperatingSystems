@@ -12,3 +12,4 @@
 /home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.pdb
 /home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.genruntimeconfig.cache
 /home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/ref/Bank.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Bank/obj/Debug/net9.0/Bank.sourcelink.json

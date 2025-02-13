@@ -171,3 +171,4 @@
 /home/parallels/Documents/CS5302-OperatingSystems/BankAccountTesting/bin/Debug/net9.0/Bank
 /home/parallels/Documents/CS5302-OperatingSystems/BankAccountTesting/bin/Debug/net9.0/Bank.dll
 /home/parallels/Documents/CS5302-OperatingSystems/BankAccountTesting/bin/Debug/net9.0/Bank.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/BankAccountTesting/obj/Debug/net9.0/BankAccountTesting.sourcelink.json

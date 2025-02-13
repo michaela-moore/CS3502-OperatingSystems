@@ -28,8 +28,9 @@ namespace Bank;
         public void Withdraw(double amount) {
             if (this.Balance < amount) {
                 Console.WriteLine("Insufficient funds");
+            } else {
+                this.Balance -= amount;
             }
-            this.Balance -= amount;
         } 
 
     }
