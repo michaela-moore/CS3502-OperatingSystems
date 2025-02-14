@@ -8,12 +8,12 @@ public class Transactions
     public static void Main() {
      
         //Create an account with an initial balance
-        double initialBalance = 1000;
+        double initialBalance = 1000.00;
         Account account = new(initialBalance);
         PrintBalance(account);
 
 
-        double[] transactions = [100, -25, 50, -75, 200, -19.3, 12.3, -100000, -0.55, 10.34]; //expected balance 1252.79
+        double[] transactions = [100.00, -25.00, 50.00, -75.00, 200.00, -19.30, 12.04, -100000.01, -0.55, 10.22]; //expected balance 1252.79
         int totalTransactions = transactions.Length; 
         Thread[] threads = new Thread[totalTransactions]; 
         

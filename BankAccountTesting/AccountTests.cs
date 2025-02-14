@@ -8,7 +8,7 @@ namespace BankAccountTesting {
         [TestMethod]
         public void Withdraw_WithValidAmount_UpdatesBalance()
         {
-            double initialBalance = 1000;
+            double initialBalance = 1000.00;
             double withdrawAmount = 19.21;
             double expectedBalance = initialBalance - withdrawAmount; // 1000 - 19.21 = 980.79
 
@@ -23,8 +23,8 @@ namespace BankAccountTesting {
 
         [TestMethod]
         public void Withdraw_WithInsufficientFunds_ShouldNotChangeBalance(){
-            double initialBalance = 100;
-            double withdrawAmount = 150;
+            double initialBalance = 100.00;
+            double withdrawAmount = 150.00;
             string expectedOutputMessage = $"Insufficient funds";
 
             //Act
@@ -44,9 +44,9 @@ namespace BankAccountTesting {
 
         [TestMethod]
         public void Deposit_WithValidAmount_ShouldIncreaseBalance(){
-            double initialBalance = 100;
-            double depositAmount = 150;
-            double expectedBalance = initialBalance + depositAmount;
+            double initialBalance = 100.00;
+            double depositAmount = 150.00;
+            double expectedBalance = initialBalance + depositAmount; // 100 + 150 = 250
 
             //Act
             Account account = new(initialBalance);
