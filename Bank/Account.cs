@@ -22,21 +22,25 @@ namespace Bank;
         }
 
         public void Deposit(double amount) {
-            
-            Console.WriteLine(Thread.CurrentThread.Name);
-            
-            Console.WriteLine($"Depositing {amount}");
+
             this.Balance += amount;
+
+            Console.WriteLine(Thread.CurrentThread.Name);
+            Console.WriteLine($"Credit {amount} | Balance {Balance} \n");
+
         }
 
         public void Withdraw(double amount) {
             
+            //Amount is sanitized to be a non-negative value for proper calculation
+            amount = Math.Abs(amount);
+
             Console.WriteLine(Thread.CurrentThread.Name);
 
             if (this.Balance < amount) {
-                Console.WriteLine("Insufficient funds");
+                Console.WriteLine($"Insufficient funds - debit {amount}  | Balance {Balance} \n");
             } else {
-                Console.WriteLine($"Withdrawing {amount}");
+                Console.WriteLine($"Debit {amount}  | Balance {Balance} \n");
                 this.Balance -= amount;
             }
         } 

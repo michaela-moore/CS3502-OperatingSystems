@@ -10,7 +10,7 @@ namespace BankAccountTesting {
         {
             double initialBalance = 1000;
             double withdrawAmount = 19.21;
-            double expectedBalance = 980.79;
+            double expectedBalance = initialBalance - withdrawAmount; // 1000 - 19.21 = 980.79
 
             // Act
             Account account = new(initialBalance);
@@ -25,8 +25,7 @@ namespace BankAccountTesting {
         public void Withdraw_WithInsufficientFunds_ShouldNotChangeBalance(){
             double initialBalance = 100;
             double withdrawAmount = 150;
-            double expectedBalance = 100;
-            string expectedOutputMessage = "Insufficient funds";
+            string expectedOutputMessage = $"Insufficient funds";
 
             //Act
             Account account = new(initialBalance);
@@ -36,10 +35,11 @@ namespace BankAccountTesting {
 
             //Assert
             double actualBalance = account.GetBalance();
-            Assert.AreEqual(expectedBalance, actualBalance);
+            Assert.AreEqual(initialBalance, actualBalance); //Assumes the balance does not change since there isn't enough funds to withdraw the amount
 
-            var outPut = stringWriter.ToString().Trim();
-            Assert.AreEqual(expectedOutputMessage, outPut);
+            var actualOutPut = stringWriter.ToString().Trim();
+            Console.WriteLine(actualOutPut);
+            Assert.IsTrue(actualOutPut.Contains(expectedOutputMessage)); //Confirms the Insufficient funds message is printed
         }
 
         [TestMethod]

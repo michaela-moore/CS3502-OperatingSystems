@@ -2,26 +2,62 @@
 namespace Bank;
 
 public class Transactions
-{   
+{
+
+  
     public static void Main() {
      
-        Account account = new(1000);
+        //Create an account with an initial balance
+        double initialBalance = 1000;
+        Account account = new(initialBalance);
         PrintBalance(account);
 
 
-        Thread t1 = new(()=> {account.Deposit(500);}) {Name = "Thread 1"};
-        Thread t2 = new(()=> {account.Withdraw(200);}) {Name = "Thread 2"};
+        double[] transactions = [100, -25, 50, -75, 200, -19.3, 12.3, -100000, -0.55, 10.34]; //expected balance 1252.79
+        int totalTransactions = transactions.Length; 
+        Thread[] threads = new Thread[totalTransactions]; 
         
-        t1.Start();
-        t2.Start();
-        t1.Join();  // Wait for t1 to finish    
-        t2.Join();  // Wait for t2 to finish    
+        /* THREAD CREATION --------------------
+            *   A thread is created for every transaction, which is based on the total number of transactions 
+            *   The new threads are then stored in the array variable 'threads'
+            *
+            *   ProcessTransaction() assess if the amount is positive/negative to determine if the 
+            *   transaction amount is debited or credited to the account.
+        */
+        
+        for (int i = 0; i < totalTransactions; i++) {
+            double transactionAmount = transactions[i];
 
-        PrintBalance(account);
+            threads[i] = new Thread(() => { ProcessTransaction(transactionAmount, account);}) {Name = $"THREAD # {i}"};
+        }
+
+
+        /* THREAD EXECUTION -------------------*/
+        // Start all threads
+        foreach (Thread thread in threads) {
+            thread.Start();
+        }
+
+        // Wait for completion of all threads 
+        foreach (Thread thread in threads) {
+            thread.Join();
+        } 
+
+        PrintBalance(account); //expected balance 1286.99
+
     }
 
+    //Helper function to determine if the transaction is a deposit or withdrawal
+    public static void ProcessTransaction(double transactionAmount, Account account) {
+        if (transactionAmount > 0) {
+                account.Deposit(transactionAmount);
+            } else {
+                account.Withdraw(transactionAmount);
+            }
+    }
 
+    //Helper function to print account summary
     public static void PrintBalance(Account account) {
-        Console.WriteLine($"Account balance: {account.GetBalance()} for account {account.GetId()}");
+        Console.WriteLine($"Account balance: {account.GetBalance()} for account ID: {account.GetId()}");
     }
 }
