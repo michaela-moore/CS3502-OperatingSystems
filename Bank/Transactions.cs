@@ -4,7 +4,6 @@ namespace Bank;
 public class Transactions
 {
 
-  
     public static void Main() {
 
         /* Single Account Transactions ----
