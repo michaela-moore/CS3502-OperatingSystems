@@ -6,46 +6,83 @@ public class Transactions
 
   
     public static void Main() {
+
+        /* Single Account Transactions ----
+            *    
+            * For every transaction stored, a thread is created to process each transaction.
+            * Depending on the transaction amount (+/-), ProcessTransaction() determies whether to 
+            * debit or credit the funds from the remaining balance. 
+            
+            * Thread management is maintained in the main() program, and mutex locks are 
+            * implemented in the Account class to ensure thread safety and prevent race conditions from 
+            * incorrectly calculating the remaining balance.
+            *  
+        */
      
         //Create an account with an initial balance
+        Console.WriteLine(" ----- TRANSACTIONS ----- ");
         double initialBalance = 1000.00;
-        Account account = new(initialBalance);
-        PrintBalance(account);
-
-
-        double[] transactions = [100.00, -25.00, 50.00, -75.00, 200.00, -19.30, 12.04, -100000.01, -0.55, 10.22]; //expected balance 1252.79
+        Account accountA = new(initialBalance);
+        
+        double[] transactions = [100.02, -25.89, 50.00, -75.00, 200.00, -19.30, 12.04, -100000.01, -0.55, 10.22]; //total = 251.52
         int totalTransactions = transactions.Length; 
-        Thread[] threads = new Thread[totalTransactions]; 
         
-        /* THREAD CREATION --------------------
-            *   A thread is created for every transaction, which is based on the total number of transactions 
-            *   The new threads are then stored in the array variable 'threads'
-            *
-            *   ProcessTransaction() assess if the amount is positive/negative to determine if the 
-            *   transaction amount is debited or credited to the account.
-        */
-        
+        // Create a thread for every transaction to be processed
+        Thread[] transactionThreads = new Thread[totalTransactions]; 
+
         for (int i = 0; i < totalTransactions; i++) {
             double transactionAmount = transactions[i];
-
-            threads[i] = new Thread(() => { ProcessTransaction(transactionAmount, account);}) {Name = $"THREAD # {i}"};
+            transactionThreads[i] = new Thread(() => { ProcessTransaction(transactionAmount, accountA);}) {Name = $"[T #{i}]"};
         }
 
-
-        /* THREAD EXECUTION -------------------*/
         // Start all threads
-        foreach (Thread thread in threads) {
+        foreach (Thread thread in transactionThreads) {
             thread.Start();
         }
 
-        // Wait for completion of all threads 
-        foreach (Thread thread in threads) {
+        // Wait for all threads to complete
+        foreach (Thread thread in transactionThreads) {
             thread.Join();
         } 
 
-        PrintBalance(account); //expected balance 1286.99
+        // Print the final balance after all transactions are completed
+        Console.WriteLine();
+        PrintBalance(accountA); //expected balance 1251.52
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        /* Cross Account Transfers ----
+            *    
+            * For every transfer stored, a thread is created to process the transfer utilizing the Transfer() method.
+            * The Transfer() method is responsible for debiting and crediting the appropriate accounts.
+            *  
+        */
+
+        Console.WriteLine("\n ----- TRANSFERS  ----- ");
+
+        //Intialize secondary bank account
+        Account accountB = new(55.02);
+
+        //Create series of threads to process each transfer
+        List <Thread> transferThreads = [
+            new Thread(() => {accountA.Transfer(100.00, accountB);}), // A = 1151.52 | B = 155.02
+            new Thread(() => {accountB.Transfer(10.50, accountA);}), // A = 1162.02 | B = 144.52
+            new Thread(() => {accountA.Transfer(900.00, accountB);}), // A = 262.02  | B = 1044.52
+            new Thread(() => {accountB.Transfer(10000.00, accountA);}) // Insufficient funds
+        ];
+
+        // Start all threads
+        foreach (Thread thread in transferThreads) {
+            thread.Start();
+        }
+
+        // Wait for all threads to complete
+        foreach (Thread thread in transferThreads) {
+            thread.Join();
+        }
 
     }
+
 
     //Helper function to determine if the transaction is a deposit or withdrawal
     public static void ProcessTransaction(double transactionAmount, Account account) {
@@ -58,6 +95,6 @@ public class Transactions
 
     //Helper function to print account summary
     public static void PrintBalance(Account account) {
-        Console.WriteLine($"Account balance: {account.GetBalance()} for account ID: {account.GetId()}");
+        Console.WriteLine($"Account ID: {account.GetId()} | Balance: {Math.Round(account.GetBalance())}");
     }
 }
