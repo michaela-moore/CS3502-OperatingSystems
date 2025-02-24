@@ -118,7 +118,7 @@ namespace BankAccountTesting {
             double expectedBalanceB = accountB.GetBalance() + transferAmount; // 500 + 200 = 700
 
             //Act
-            accountA.Transfer(transferAmount, accountB);
+            accountA.Transfer_WithDeadlockPrevention(transferAmount, accountB);
         
 
             //Assert
@@ -147,7 +147,7 @@ namespace BankAccountTesting {
 
             var stringWriter  = new StringWriter();
             Console.SetOut(stringWriter);
-            accountA.Transfer(transferAmount, accountB);
+            accountA.Transfer_WithDeadlockPrevention(transferAmount, accountB);
 
 
             //Assert

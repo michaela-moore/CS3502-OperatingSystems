@@ -62,12 +62,24 @@ public class Transactions
         //Intialize secondary bank account
         Account accountB = new(55.02);
 
+        //Process transfers between accounts
+        //ProcessTransfer_WithDeadlockDetection(accountA, accountB); 
+
+        ProcessTransfer_WithDeadlockPrevention(accountA, accountB); 
+
+    }
+
+    
+     public static void ProcessTransfer_WithDeadlockDetection(Account accountA, Account accountB) {
+
+        Console.WriteLine("\nShowing transfers with Deadlock Detection");
+
         //Create series of threads to process each transfer
         List <Thread> transferThreads = [
-            new Thread(() => {accountA.Transfer(100.00, accountB);}), // A = 1151.52 | B = 155.02
-            new Thread(() => {accountB.Transfer(10.50, accountA);}), // A = 1162.02 | B = 144.52
-            new Thread(() => {accountA.Transfer(900.00, accountB);}), // A = 262.02  | B = 1044.52
-            new Thread(() => {accountB.Transfer(10000.00, accountA);}) // Insufficient funds
+            new Thread(() => {accountA.Transfer_WithDeadlockDetection(100.00, accountB);}){Name = "1"}, 
+            new Thread(() => {accountB.Transfer_WithDeadlockDetection(10.50, accountA);}){Name = "2"}, 
+            new Thread(() => {accountA.Transfer_WithDeadlockDetection(900.00, accountB);}){Name = "3"}, 
+            new Thread(() => {accountB.Transfer_WithDeadlockDetection(10000.00, accountA);}){Name = "4"} // Insufficient funds
         ];
 
         // Start all threads
@@ -75,11 +87,49 @@ public class Transactions
             thread.Start();
         }
 
+        //Separate thread for monitoring deadlocks
+        DeadlockDetect deadlockDetect = new(); 
+        foreach (Thread thread in transferThreads) {
+            deadlockDetect.WatchThread(thread);
+        }
+
+        Thread monitor = new(deadlockDetect.LogDeadlock);
+        monitor.Start();
+
+
         // Wait for all threads to complete
         foreach (Thread thread in transferThreads) {
             thread.Join();
-        }
+        }       
+        
+        Console.WriteLine("Transfers completed");
 
+    }
+
+    public static void ProcessTransfer_WithDeadlockPrevention(Account accountA, Account accountB) {
+
+        Console.WriteLine("\nShowing transfers with Deadlock Prevention");
+
+        //Create series of threads to process each transfer 
+        //Transfer == from.amount.to
+            List <Thread> transferThreads = [
+                new Thread(() => {accountA.Transfer_WithDeadlockPrevention(100.00, accountB);}){Name = "1"}, 
+                new Thread(() => {accountB.Transfer_WithDeadlockPrevention(10.50, accountA);}){Name = "2"}, 
+                new Thread(() => {accountA.Transfer_WithDeadlockPrevention(900.00, accountB);}){Name = "3"}, 
+                new Thread(() => {accountB.Transfer_WithDeadlockPrevention(10000.00, accountA);}){Name = "4"} // Insufficient funds
+            ];
+
+            // Start all threads
+            foreach (Thread thread in transferThreads) {
+                thread.Start();
+            }
+
+            // Wait for all threads to complete
+            foreach (Thread thread in transferThreads) {
+                thread.Join();
+            }
+
+            Console.WriteLine("Transfers completed");
     }
 
 
