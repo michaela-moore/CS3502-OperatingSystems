@@ -1,0 +1,15 @@
+/home/parallels/Documents/CS5302-OperatingSystems/Account/bin/Debug/net9.0/Account
+/home/parallels/Documents/CS5302-OperatingSystems/Account/bin/Debug/net9.0/Account.deps.json
+/home/parallels/Documents/CS5302-OperatingSystems/Account/bin/Debug/net9.0/Account.runtimeconfig.json
+/home/parallels/Documents/CS5302-OperatingSystems/Account/bin/Debug/net9.0/Account.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Account/bin/Debug/net9.0/Account.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.GeneratedMSBuildEditorConfig.editorconfig
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.AssemblyInfoInputs.cache
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.AssemblyInfo.cs
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.csproj.CoreCompileInputs.cache
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.sourcelink.json
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/refint/Account.dll
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/Account.genruntimeconfig.cache
+/home/parallels/Documents/CS5302-OperatingSystems/Account/obj/Debug/net9.0/ref/Account.dll
