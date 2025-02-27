@@ -1,0 +1,15 @@
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/bin/Debug/net9.0/InterprocessCommunications
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/bin/Debug/net9.0/InterprocessCommunications.deps.json
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/bin/Debug/net9.0/InterprocessCommunications.runtimeconfig.json
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/bin/Debug/net9.0/InterprocessCommunications.dll
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/bin/Debug/net9.0/InterprocessCommunications.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.GeneratedMSBuildEditorConfig.editorconfig
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.AssemblyInfoInputs.cache
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.AssemblyInfo.cs
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.csproj.CoreCompileInputs.cache
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.sourcelink.json
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.dll
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/refint/InterprocessCommunications.dll
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.pdb
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/InterprocessCommunications.genruntimeconfig.cache
+/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/obj/Debug/net9.0/ref/InterprocessCommunications.dll
