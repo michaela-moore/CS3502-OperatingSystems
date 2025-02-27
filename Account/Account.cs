@@ -55,7 +55,7 @@ namespace Account {
                 Thread.Sleep(100); //Simulate a delay in processing the transaction
 
                 if (this.Balance < amount) {
-                    Console.WriteLine($"Insufficient funds to debit {amount} | Act# {Id} balance {RoundAmount(Balance)}");
+                    Console.WriteLine($"Not enough funds to debit {amount} | Act# {Id} balance {RoundAmount(Balance)}");
                 } else {
                     this.Balance -= amount;
                     Console.WriteLine($"(-) {amount}  | Act# {Id} Balance {RoundAmount(Balance)}");
@@ -83,7 +83,7 @@ namespace Account {
 
                     //Check if the account has sufficient funds to transfer
                     if (amount > this.Balance) {
-                        Console.WriteLine($"Insufficient funds to transfer {amount} | Balance: {RoundAmount(Balance)}");
+                        Console.WriteLine($"Not enough funds to transfer {amount} | Balance: {RoundAmount(Balance)}");
                         return;
                     
                     } else {
@@ -114,11 +114,13 @@ namespace Account {
                 firstResourceLocked = Monitor.TryEnter(this.lockObject, 3000); // Lock the sending account
 
                 if (firstResourceLocked) { // first is locked
+
                     Thread.Sleep(500); // emulate a delay
 
                     secondResourceLocked = Monitor.TryEnter(to.lockObject, 3000); // Lock the receiving account
 
                     if (secondResourceLocked) { // second is locked
+                        
                         // Check if the account has sufficient funds
                         if (amount < this.Balance) {
                             // Withdraw from the sending account
