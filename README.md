@@ -1,6 +1,6 @@
 # CS3502 - Operating Systems 
 
-## Class Project 1: Multi-Threading Programming, Synchronization, and Deadlock Management
+### Class Project 1: Multi-Threading Programming, Synchronization, and Deadlock Management
 
 ### Overview
 This project explores multithreaded programming and interprocess communication. The multithreading component simulates a banking system that demonstrates concurrency through transactions on a single account as well as transactions between mulitple accounts. It includes examples of thread management, synchronization techniques for handling race conditions, and implements deadlock detection and resolution.
