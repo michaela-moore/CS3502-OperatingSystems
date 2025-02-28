@@ -4,8 +4,8 @@ using System.IO;
 using System.IO.Pipes;
 
 namespace InterprocessCommunications {
-    public class ReadFilesProcess {
-        public static void Main(string[] args) {
+    public class PipeServer {
+        public static void Main(String[] args) {
 
             String file = "/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/sample_files";
 
@@ -23,34 +23,25 @@ namespace InterprocessCommunications {
                 //Read the output of the process
                 Console.WriteLine("...Reading files from the folder...");
                 output = folderReadProcess.StandardOutput.ReadToEnd();
+                Console.WriteLine($"Files in folder: {output}");
                 folderReadProcess.WaitForExit();
+
+
+                //Create a new pipe server to send files to the pipe client
             
-            
-                using (var pipeServer = new NamedPipeServerStream("filesPipe")) {
-                    Console.WriteLine("Waiting to connect to the pipe server...");
-                    pipeServer.WaitForConnection();
 
-                    using (var reader = new StreamReader(pipeServer)) {
+                using var pipeServer = new NamedPipeServerStream("filesPipe");
+                Console.WriteLine("Waiting to connect to the pipe server...");
+                pipeServer.WaitForConnection();
 
-                        using (var writer = new StreamWriter(pipeServer) {AutoFlush = true}) {
-                           
-                           //write files returned to the pipe server
-                            writer.WriteLine(output);
-                            Console.WriteLine("Files sent to the pipe server.");
-
-                        }
-
-                        //read files from pipeserver
-                        while (!reader.EndOfStream) {
-                            Console.WriteLine(reader.ReadLine());
-                        }
-                    }
-
-
+                using (var writer = new StreamWriter(pipeServer)){
+                    //write files returned to the pipe server
+                    writer.WriteLine(output);
+                    writer.Flush();
+                    writer.Close();
+                    Console.WriteLine($"Files {output} sent to the pipe server.");
                 }
 
-
-            
             }
             catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
