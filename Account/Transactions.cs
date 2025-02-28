@@ -48,8 +48,8 @@
             //Intialize secondary bank account
             Account accountB = new(55.02);
 
-            //ProcessTransfer_WithDeadlockDetection(accountA, accountB); // remove comment to run active deadlock scenario
-            ProcessTransfer_WithDeadlockPrevention(accountA, accountB); 
+            ProcessTransfer_WithDeadlockDetection(accountA, accountB); // remove comment to run active deadlock scenario
+            //ProcessTransfer_WithDeadlockPrevention(accountA, accountB); 
 
         }
 
@@ -131,6 +131,15 @@
                 foreach (Thread thread in transferThreads) {
                     thread.Start();
                 }
+
+                //Separate thread for monitoring deadlocks
+                DeadlockDetect deadlockDetect = new(); 
+                foreach (Thread thread in transferThreads) {
+                    deadlockDetect.WatchThread(thread);
+                }
+
+                Thread monitor = new(deadlockDetect.LogDeadlock);
+                monitor.Start();
 
                 // Wait for all threads to complete
                 foreach (Thread thread in transferThreads) {
