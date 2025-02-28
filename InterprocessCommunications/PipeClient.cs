@@ -2,8 +2,8 @@ using System.IO.Pipes;
 namespace InterprocessCommunications;
 
 public class PipeClient {
-    public static void Main(String[] args){
-
+    public static void Main(){
+        //Wait for the pipe server to start
         Thread.Sleep(3000);
 
         try {

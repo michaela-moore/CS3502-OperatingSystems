@@ -1,17 +1,15 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using System.IO.Pipes;
 
 namespace InterprocessCommunications {
     public class PipeServer {
-        public static void Main(String[] args) {
+        public static void Main() {
 
-            String file = "/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/sample_files";
+            string file = "/home/parallels/Documents/CS5302-OperatingSystems/InterprocessCommunications/sample_files";
 
             //Initialize a new process to read files in folder
             using Process folderReadProcess = new();
-            String output = "";
+            string output = "";
 
             try{
                 folderReadProcess.StartInfo.FileName = "ls"; //command for reading contents of a folder
@@ -28,8 +26,6 @@ namespace InterprocessCommunications {
 
 
                 //Create a new pipe server to send files to the pipe client
-            
-
                 using var pipeServer = new NamedPipeServerStream("filesPipe");
                 Console.WriteLine("Waiting to connect to the pipe server...");
                 pipeServer.WaitForConnection();
