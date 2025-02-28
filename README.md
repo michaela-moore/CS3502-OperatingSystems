@@ -22,3 +22,6 @@ This project can be found within:
 The program is built using C#
 
 To run the program locally, fork this repo. Open the root directory in a IDE that supports C# and run ```dotnet build``` to initiate the program
+
+Note: For running the IPC program you will need to swap the file path in PipeServer [line 8
+]([url](https://github.com/michaela-moore/CS3502-OperatingSystems/blob/main/InterprocessCommunications/PipeServer.cs#L8))
