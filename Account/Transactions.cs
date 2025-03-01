@@ -24,11 +24,11 @@
             double[] transactionsLarge = [-1,-3.32,12,12.44,-33.12,-5.31,12,12.55,4.21,2,2933414,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12,-3.32,12,12.44,-33.12,-5.31,12,12.55,4.21,3,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12,-3.32,12,12.44,-33.12,-5.31,12,12.55,4.21,34,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,234,100,0.1,0.3,0.22,12,43,63.12,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,4.21,34,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12,-1,-3.32,12,12.44,-33.12,-5.31,12,12.55,4.21,234,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12,-3.32,12,12.44,-33.12,-5.31,12,12.55,4.21,6,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12,-3.32,12,12.44,-33.12,-5.31,12,12.55,4.21,3,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,4.21,-1463.3,1023,0.42,-0.55,100,4.31,78.3,-23,4.3,-234.4,100,0.1,0.3,0.22,12,43,63.12];
 
 
-            Console.WriteLine("Small Batch Processing");
-            SingleAccounTransactions(accountA, transactionsSmall);
+            //Console.WriteLine("Small Batch Processing");
+            //SingleAccounTransactions(accountA, transactionsSmall);
 
-            Console.WriteLine("Large Batch Processing");
-            SingleAccounTransactions(accountA, transactionsLarge);
+            //Console.WriteLine("Large Batch Processing");
+            //SingleAccounTransactions(accountA, transactionsLarge);
 
 
             ///////////////////////////////////////////////////////////////////////////////
@@ -48,8 +48,8 @@
             //Intialize secondary bank account
             Account accountB = new(55.02);
 
-            ProcessTransfer_WithDeadlockDetection(accountA, accountB); // remove comment to run active deadlock scenario
-            //ProcessTransfer_WithDeadlockPrevention(accountA, accountB); 
+            //ProcessTransfer_WithDeadlockDetection(accountA, accountB); // remove comment to run active deadlock scenario
+            ProcessTransfer_WithDeadlockPrevention(accountA, accountB); 
 
         }
 
@@ -105,7 +105,7 @@
             Thread monitor = new(deadlockDetect.LogDeadlock);
             monitor.Start();
 
-
+        
             // Wait for all threads to complete
             foreach (Thread thread in transferThreads) {
                 thread.Join();
@@ -132,14 +132,6 @@
                     thread.Start();
                 }
 
-                //Separate thread for monitoring deadlocks
-                DeadlockDetect deadlockDetect = new(); 
-                foreach (Thread thread in transferThreads) {
-                    deadlockDetect.WatchThread(thread);
-                }
-
-                Thread monitor = new(deadlockDetect.LogDeadlock);
-                monitor.Start();
 
                 // Wait for all threads to complete
                 foreach (Thread thread in transferThreads) {

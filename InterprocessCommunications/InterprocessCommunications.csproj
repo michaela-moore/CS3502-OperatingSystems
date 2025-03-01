@@ -5,7 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>InterprocessCommunications.PipeClient</StartupObject>
+    <StartupObject>InterprocessCommunications.PipeServer</StartupObject>
   </PropertyGroup>
 
 </Project>

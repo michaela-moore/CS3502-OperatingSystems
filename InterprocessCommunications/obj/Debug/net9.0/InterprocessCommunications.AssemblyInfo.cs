@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InterprocessCommunications")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f458cec6002a8cf756b29a60ab9b984ed0a1e4a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bacc938d72c820168dbaa13721975b564d3db3d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("InterprocessCommunications")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InterprocessCommunications")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
